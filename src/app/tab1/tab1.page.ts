@@ -8,5 +8,9 @@ import { Component } from '@angular/core';
 export class Tab1Page {
 
   constructor() {}
-
+  slideOpts = {
+    initialSlide: 0,
+    slidesPerView: 1,
+    autoplay: true
+  };
 }
