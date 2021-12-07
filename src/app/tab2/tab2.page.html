@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color='primary'>
     <ion-title>
-      Tab 2
+      Products
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,9 +9,26 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
+      <ion-title size="large">Products</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-row>
+    <ion-col *ngFor="let product of products" size="6" style="padding: 5px;">
+      <ion-card>
+        <img [src]="product.imgUrl" />
+        <!-- <img src='../../assets/images/products/fish1.jpeg'/> -->
+        <ion-card-header>
+          <ion-card-subtitle>{{product.name}}</ion-card-subtitle>
+          <ion-card-title>{{product.description}}</ion-card-title>
+        </ion-card-header>
+      
+        <ion-card-content>
+         
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+ 
+
 </ion-content>
