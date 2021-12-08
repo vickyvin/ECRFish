@@ -13,11 +13,11 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-row>
+  <!-- <ion-row>
     <ion-col *ngFor="let product of products" size="6" style="padding: 5px;">
       <ion-card>
         <img [src]="product.imgUrl" />
-        <!-- <img src='../../assets/images/products/fish1.jpeg'/> -->
+        
         <ion-card-header>
           <ion-card-subtitle>{{product.name}}</ion-card-subtitle>
           <ion-card-title>{{product.description}}</ion-card-title>
@@ -28,7 +28,56 @@
         </ion-card-content>
       </ion-card>
     </ion-col>
-  </ion-row>
+  </ion-row> -->
+
+    <!--  <ion-row>
+      <ion-col>
+        <h3>Product Details</h3>
+        <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="searchChanged()"></ion-searchbar>
+      </ion-col>
+    </ion-row> -->
+    <ion-row>
+        <ion-list>
+          <!-- (click)="ItemClicked(info,i)" -->
+          <ion-item *ngFor="let product of products;let i=index" lines="none">
+              <ion-row>
+                <ion-col size="6">
+                  <ion-card style="padding-left: 1%;"> <img [src]="product.imgUrl"></ion-card>
+                </ion-col>
+                <ion-col size="5">
+                  <div style="display: flex;flex-direction: column;padding-top:10%">
+                    <ion-label>{{product.name}}</ion-label>
+                    <ion-item lines="none">
+                      <ion-select  interface="popover" value="1" placeholder="Weight/Quantity" style="width: 100%;">       
+                        <ion-select-option [selected]="weight.isSelected" [value]="weight.value" *ngFor="let weight of productWeights" >{{weight.displayText}}</ion-select-option>
+                      </ion-select>
+                    </ion-item>
+                    <ion-label>
+                      Rs: {{product.price}}
+                    </ion-label>
+                  </div>
+                  <!-- <ion-label>
+                    <h2><strong>{{data.productName}}</strong></h2>
+                    <h5>{{data.Weight}}</h5>
+                    <b></b>
+                  </ion-label> -->
+                </ion-col>
+                <!-- <ion-col size="3">
+                  <div style="display: flex;padding: 5px;padding-top: 25px;">
+                    <ion-icon style="color: #003366 !important;font-size: 25px;padding: 2px;" name="remove-circle"
+                      (click)="decrement(data)">
+                    </ion-icon>
+                    <ion-label style="font-size: 25px;padding: 2px;">{{data._qtt}}</ion-label>
+                    <ion-icon style="color: #003366 !important;font-size: 25px;padding: 2px;" name="add-circle"
+                      (click)="increment(data)">
+                    </ion-icon>
+                  </div>
+
+                </ion-col> -->
+              </ion-row>
+          </ion-item>
+        </ion-list>
+    </ion-row>
  
 
 </ion-content>

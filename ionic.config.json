@@ -1,5 +1,7 @@
 {
   "name": "ECRFish",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
