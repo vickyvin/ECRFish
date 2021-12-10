@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ecrfish-1d236": {
+      "hosting": {
+        "app": [
+          "ecrfish-1d236"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ecrfish-1d236"
+  }
+}
