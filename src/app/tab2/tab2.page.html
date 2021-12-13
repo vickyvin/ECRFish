@@ -13,6 +13,12 @@
     </ion-toolbar>
   </ion-header>
 
+  <ion-fab  vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button [routerLink]="['/tabs/tab3']">
+      <ion-icon name="enter"></ion-icon>Buy
+    </ion-fab-button>
+  </ion-fab>
+
   <!-- <ion-row>
     <ion-col *ngFor="let product of products" size="6" style="padding: 5px;">
       <ion-card>
@@ -49,7 +55,7 @@
                     <ion-label>{{product.name}}</ion-label>
                     <ion-item lines="none">
                       <ion-select  interface="popover" value="1" placeholder="Weight/Quantity" style="width: 100%;">       
-                        <ion-select-option [selected]="weight.isSelected" [value]="weight.value" *ngFor="let weight of productWeights" >{{weight.displayText}}</ion-select-option>
+                        <ion-select-option [value]="weight.value" *ngFor="let weight of productWeights" >{{weight.displayText}}</ion-select-option>
                       </ion-select>
                     </ion-item>
                     <ion-label>

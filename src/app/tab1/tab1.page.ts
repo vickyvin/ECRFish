@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
@@ -7,10 +8,18 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
+  constructor(private route:Router) {}
   slideOpts = {
     initialSlide: 0,
     slidesPerView: 1,
     autoplay: true
   };
+
+  logout() {
+    
+      this.route.navigate(['login']);
+   
+    // this.authService.logout();
+    
+  }
 }

@@ -13,6 +13,8 @@ import { provideAuth,getAuth } from  "@angular/fire/auth";
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideFunctions,getFunctions } from '@angular/fire/functions';
 import { provideMessaging,getMessaging } from '@angular/fire/messaging';
+import { LoginPage } from './auth/login/login.page';
+import { RegisterPage } from './auth/register/register.page';
 
 @NgModule({
   declarations: [AppComponent],
