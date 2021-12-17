@@ -1236,5 +1236,8 @@ sub {
 .ion-align-items-baseline {
   align-items: baseline !important;
 }
+.cont {
+  --background: url('Splashscreen.png') no-repeat center center/cover;
+}
 
 /*# sourceMappingURL=styles.css.map*/

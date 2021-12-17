@@ -43,7 +43,15 @@ const routes = [
     {
         path: '',
         loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_tabs_tabs_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./tabs/tabs.module */ 5564)).then(m => m.TabsPageModule)
-    }
+    },
+    {
+        path: 'login',
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_auth_login_login_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./auth/login/login.module */ 8990)).then(m => m.LoginPageModule)
+    },
+    {
+        path: 'register',
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_auth_register_register_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./auth/register/register.module */ 6108)).then(m => m.RegisterPageModule)
+    },
 ];
 let AppRoutingModule = class AppRoutingModule {
 };
@@ -247,7 +255,7 @@ var map = {
 		"node_modules_ionic_core_dist_esm_ion-action-sheet_entry_js"
 	],
 	"./ion-alert.entry.js": [
-		6108,
+		5569,
 		"common",
 		"node_modules_ionic_core_dist_esm_ion-alert_entry_js"
 	],

@@ -1,5 +1,5 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>
       Tab 3
     </ion-title>
@@ -13,5 +13,16 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+    <ion-item>
+      <ion-label position="floating">Product</ion-label>
+      <ion-input placeholder="product name" [(ngModel)]="ProductName" required></ion-input>
+    </ion-item>
+
+    <ion-button (click)="saveProduct()" expand="full" shape="round">Save</ion-button>
+
+  <ul>
+    <li *ngFor="let product of products$ | async">
+      {{ product.ProductName }}
+    </li>
+  </ul>
 </ion-content>

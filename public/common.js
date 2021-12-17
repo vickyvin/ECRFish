@@ -516,6 +516,92 @@ ExploreContainerComponentModule = (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__decora
 
 /***/ }),
 
+/***/ 5970:
+/*!*******************************************!*\
+  !*** ./src/app/services/alert.service.ts ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AlertService": () => (/* binding */ AlertService)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ 4762);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 7716);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ionic/angular */ 476);
+
+
+
+//import{}from '@ionic/angular';
+let AlertService = class AlertService {
+    constructor(toastController, alertController) {
+        this.toastController = toastController;
+        this.alertController = alertController;
+    }
+    presentToast(message) {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__awaiter)(this, void 0, void 0, function* () {
+            const toast = yield this.toastController.create({
+                message: message,
+                duration: 3000,
+                position: 'bottom',
+                color: 'dark'
+            });
+            toast.present();
+        });
+    }
+    ShowAlert(message) {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__awaiter)(this, void 0, void 0, function* () {
+            const alert = yield this.alertController.create({
+                header: 'Alert',
+                //subHeader: 'Subtitle',
+                message: message,
+                buttons: ['OK']
+                //buttons: ['Disagree', 'Agree']
+            });
+            yield alert.present();
+        });
+    }
+    presentConfirm() {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__awaiter)(this, void 0, void 0, function* () {
+            let alert = yield this.alertController.create({
+                header: 'Confirm',
+                message: 'Are you sure to delete..!',
+                buttons: [
+                    {
+                        text: 'Cancel',
+                        role: 'cancel',
+                        handler: () => {
+                            return false;
+                        }
+                    },
+                    {
+                        text: 'Ok',
+                        handler: () => {
+                            return true;
+                        }
+                    }
+                ]
+            });
+            alert.present();
+            //return false;
+        });
+    }
+};
+AlertService.ctorParameters = () => [
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_1__.ToastController },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_1__.AlertController }
+];
+AlertService = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.Injectable)({
+        providedIn: 'root'
+    })
+], AlertService);
+
+
+
+/***/ }),
+
 /***/ 3643:
 /*!********************************************************************!*\
   !*** ./src/app/explore-container/explore-container.component.scss ***!

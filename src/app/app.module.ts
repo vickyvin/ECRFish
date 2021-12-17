@@ -16,6 +16,7 @@ import { provideMessaging,getMessaging } from '@angular/fire/messaging';
 import { LoginPage } from './auth/login/login.page';
 import { RegisterPage } from './auth/register/register.page';
 
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -24,13 +25,38 @@ import { RegisterPage } from './auth/register/register.page';
     IonicModule.forRoot(),
     AppRoutingModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideFirestore(() => getFirestore()),
-    provideAuth(()=>getAuth()),
-    provideFunctions(() => getFunctions()),
+    provideFirestore(() =>getFirestore()),
+    provideAuth(()=>{
+      if (environment.useEmulators) {
+        const fireauth = getAuth();
+        return fireauth;
+    } else {
+        getAuth();
+    }
+    }),
+    provideFunctions(() => {
+      if (environment.useEmulators) {
+        const firefunctions = getFunctions();
+        return firefunctions;
+    } else {
+        getFunctions();
+    }
+    }),
     provideMessaging(() => getMessaging()),
-    provideStorage(() => getStorage())
+    provideStorage(() => {
+      if (environment.useEmulators) {
+        const firestorage = getStorage();
+        return firestorage;
+    } else {
+        getStorage();
+    }
+    })
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
+  
 })
-export class AppModule {}
+export class AppModule {
+
+}
+
