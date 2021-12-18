@@ -1,0 +1,61 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color='primary'>
+    <ion-title>
+      Order
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list style="padding: 35px;">
+    <ion-radio-group value="biff">
+      <ion-list-header>
+        <ion-label>Default Address</ion-label>
+      </ion-list-header>
+      <ion-item *ngFor="let ad of addressData;let i=index" style="padding: 5px;font-size: 14px;" lines="none">
+        <div style="display: flex;flex-direction: column;padding: 10px;">
+          <span>{{ad.customerName}},</span>
+          <span>{{ad.phoneNumber}}</span>
+          <span>{{ad.email}}</span>
+          <span>{{ad.address}}</span>
+        </div>
+        <ion-radio (ionFocus)="addressChange(ad)" slot="start" value="address{{i}}"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+  <ion-list>
+    <ion-list-header style="padding: 10px;">
+      <ion-label>Add New Address</ion-label>
+      <ion-item>
+        <ion-button  (click)="isNewAddress=true" slot="end" color="primary">Add</ion-button>
+      </ion-item>
+      
+    </ion-list-header>
+    <form *ngIf='isNewAddress' style="padding: 10px;" [formGroup]="form">
+      <ion-item>
+        <ion-label class="lbl" position="floating">Name</ion-label>
+        <ion-input name="Name" formControlName="CustomerName"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label class="lbl" position="floating">Phone Number</ion-label>
+        <ion-input name="PhoneNumber" formControlName="PhoneNumber"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label class="lbl" position="floating">Email Id</ion-label>
+        <ion-input name="Emailid" formControlName="Email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label class="lbl" position="floating">Address </ion-label>
+        <ion-textarea name="Address" formControlName="City"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        
+        <ion-button  (click)="AddAddress(form)" slot="end" color="primary">Save</ion-button>
+      </ion-item>
+    </form>
+    <ion-item>
+      <ion-text slot="start"><strong>Total Amt: </strong><br>{{totalAmount}}</ion-text>
+      <ion-button [disabled]="isBuyNowDisabled" (click)="BuyNowClick()" slot="end" color="primary">Buy Now</ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

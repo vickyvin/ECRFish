@@ -1,0 +1,58 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color='primary'>
+    <ion-title>
+      Cart
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Cart</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  
+  <ion-fab  vertical="bottom" horizontal="end" slot="fixed">
+    <ion-button color="success" (click)="PlaceOrder()" expand="full" shape="round">
+      <ion-icon name="checkmark"></ion-icon>Order Now
+    </ion-button>
+  </ion-fab>
+  <ion-fab  vertical="bottom" horizontal="start" slot="fixed">
+    <ion-button color="danger"  expand="full" shape="round">
+      Total RS:{{totalAmount}}
+    </ion-button>
+  </ion-fab>
+
+ 
+    <ion-row>
+        <ion-list>
+          <!-- (click)="ItemClicked(info,i)" -->
+          <ion-item *ngFor="let product of ProductDetails;let i=index" lines="none">
+              <ion-row>
+                <ion-col size="6">
+                  <ion-card style="padding-left: 1%;"> <img [src]="product.imgUrl"></ion-card>
+                </ion-col>
+                <ion-col size="5">
+                  <div style="display: flex;flex-direction: column;padding-top:10%">
+                    <ion-label>{{product.name}}</ion-label>
+                    <ion-item lines="none">
+                      <ion-label>
+                        {{product.weight[0].displayText}}
+                      </ion-label> 
+                    </ion-item>
+                    <ion-label>
+                      Rs: {{product.CalculatedPrice}}
+                    </ion-label>               
+                  </div>               
+                </ion-col>             
+              </ion-row>
+          </ion-item>       
+        </ion-list>
+        
+    </ion-row>
+    
+   
+
+</ion-content>

@@ -132,6 +132,16 @@ let Tab2Page = class Tab2Page {
             { value: 8, displayText: "8kg", price: 800, isSelected: false },
             { value: 9, displayText: "9kg", price: 900, isSelected: false },
             { value: 10, displayText: "10kg", price: 1000, isSelected: false },
+            { value: 11, displayText: "11kg", price: 1100, isSelected: true },
+            { value: 12, displayText: "12kg", price: 1200, isSelected: false },
+            { value: 13, displayText: "13kg", price: 1300, isSelected: false },
+            { value: 14, displayText: "14kg", price: 1400, isSelected: false },
+            { value: 15, displayText: "15kg", price: 1500, isSelected: false },
+            { value: 16, displayText: "16kg", price: 1600, isSelected: false },
+            { value: 17, displayText: "17kg", price: 1700, isSelected: false },
+            { value: 18, displayText: "18kg", price: 1800, isSelected: false },
+            { value: 19, displayText: "19kg", price: 1900, isSelected: false },
+            { value: 20, displayText: "20kg", price: 2000, isSelected: false }
         ];
         this.Defaultweight = this.productWeights[0].displayText;
     }

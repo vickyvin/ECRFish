@@ -98,20 +98,45 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Tab3Page": () => (/* binding */ Tab3Page)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 4762);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 4762);
 /* harmony import */ var _raw_loader_tab3_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./tab3.page.html */ 4255);
 /* harmony import */ var _tab3_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tab3.page.scss */ 943);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 7716);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 7716);
+/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/fire/firestore */ 630);
+/* harmony import */ var firebase_firestore__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! firebase/firestore */ 2491);
+
+
 
 
 
 
 let Tab3Page = class Tab3Page {
-    constructor() { }
+    constructor(firestore) {
+        this.firestore = firestore;
+    }
+    ngOnInit() {
+        this.getProducts(this.firestore);
+        console.log('product data', this.products$);
+    }
+    getProducts(db) {
+        const productcollection = (0,_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_3__.collection)(db, 'Products');
+        this.products$ = (0,_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_3__.collectionData)(productcollection);
+    }
+    saveProduct() {
+        console.log('entered value', this.ProductName);
+        this.addProduct(this.firestore, this.ProductName);
+    }
+    addProduct(db, name) {
+        (0,firebase_firestore__WEBPACK_IMPORTED_MODULE_2__.addDoc)((0,_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_3__.collection)(db, 'Products'), { ProductName: name, ProductId: 2, ProductPrice: 500 }).then(x => {
+            alert('doc saved');
+        });
+    }
 };
-Tab3Page.ctorParameters = () => [];
-Tab3Page = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.Component)({
+Tab3Page.ctorParameters = () => [
+    { type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_3__.Firestore }
+];
+Tab3Page = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_5__.Component)({
         selector: 'app-tab3',
         template: _raw_loader_tab3_page_html__WEBPACK_IMPORTED_MODULE_0__.default,
         styles: [_tab3_page_scss__WEBPACK_IMPORTED_MODULE_1__.default]
@@ -148,7 +173,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-header [translucent]=\"true\">\n  <ion-toolbar>\n    <ion-title>\n      Tab 3\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [fullscreen]=\"true\">\n  <ion-header collapse=\"condense\">\n    <ion-toolbar>\n      <ion-title size=\"large\">Tab 3</ion-title>\n    </ion-toolbar>\n  </ion-header>\n\n  <app-explore-container name=\"Tab 3 page\"></app-explore-container>\n</ion-content>\n");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-header [translucent]=\"true\">\n  <ion-toolbar color=\"primary\">\n    <ion-title>\n      Tab 3\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [fullscreen]=\"true\">\n  <ion-header collapse=\"condense\">\n    <ion-toolbar>\n      <ion-title size=\"large\">Tab 3</ion-title>\n    </ion-toolbar>\n  </ion-header>\n\n    <ion-item>\n      <ion-label position=\"floating\">Product</ion-label>\n      <ion-input placeholder=\"product name\" [(ngModel)]=\"ProductName\" required></ion-input>\n    </ion-item>\n\n    <ion-button (click)=\"saveProduct()\" expand=\"full\" shape=\"round\">Save</ion-button>\n\n  <ul>\n    <li *ngFor=\"let product of products$ | async\">\n      {{ product.ProductName }}\n    </li>\n  </ul>\n</ion-content>\n");
 
 /***/ })
 

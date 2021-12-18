@@ -154,13 +154,37 @@ AppModule = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
             _app_routing_module__WEBPACK_IMPORTED_MODULE_0__.AppRoutingModule,
             (0,_angular_fire_app__WEBPACK_IMPORTED_MODULE_7__.provideFirebaseApp)(() => (0,_angular_fire_app__WEBPACK_IMPORTED_MODULE_7__.initializeApp)(_environments_environment__WEBPACK_IMPORTED_MODULE_2__.environment.firebase)),
             (0,_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_8__.provideFirestore)(() => (0,_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_8__.getFirestore)()),
-            (0,_angular_fire_auth__WEBPACK_IMPORTED_MODULE_9__.provideAuth)(() => (0,_angular_fire_auth__WEBPACK_IMPORTED_MODULE_9__.getAuth)()),
-            (0,_angular_fire_functions__WEBPACK_IMPORTED_MODULE_10__.provideFunctions)(() => (0,_angular_fire_functions__WEBPACK_IMPORTED_MODULE_10__.getFunctions)()),
+            (0,_angular_fire_auth__WEBPACK_IMPORTED_MODULE_9__.provideAuth)(() => {
+                if (_environments_environment__WEBPACK_IMPORTED_MODULE_2__.environment.useEmulators) {
+                    const fireauth = (0,_angular_fire_auth__WEBPACK_IMPORTED_MODULE_9__.getAuth)();
+                    return fireauth;
+                }
+                else {
+                    (0,_angular_fire_auth__WEBPACK_IMPORTED_MODULE_9__.getAuth)();
+                }
+            }),
+            (0,_angular_fire_functions__WEBPACK_IMPORTED_MODULE_10__.provideFunctions)(() => {
+                if (_environments_environment__WEBPACK_IMPORTED_MODULE_2__.environment.useEmulators) {
+                    const firefunctions = (0,_angular_fire_functions__WEBPACK_IMPORTED_MODULE_10__.getFunctions)();
+                    return firefunctions;
+                }
+                else {
+                    (0,_angular_fire_functions__WEBPACK_IMPORTED_MODULE_10__.getFunctions)();
+                }
+            }),
             (0,_angular_fire_messaging__WEBPACK_IMPORTED_MODULE_11__.provideMessaging)(() => (0,_angular_fire_messaging__WEBPACK_IMPORTED_MODULE_11__.getMessaging)()),
-            (0,_angular_fire_storage__WEBPACK_IMPORTED_MODULE_12__.provideStorage)(() => (0,_angular_fire_storage__WEBPACK_IMPORTED_MODULE_12__.getStorage)())
+            (0,_angular_fire_storage__WEBPACK_IMPORTED_MODULE_12__.provideStorage)(() => {
+                if (_environments_environment__WEBPACK_IMPORTED_MODULE_2__.environment.useEmulators) {
+                    const firestorage = (0,_angular_fire_storage__WEBPACK_IMPORTED_MODULE_12__.getStorage)();
+                    return firestorage;
+                }
+                else {
+                    (0,_angular_fire_storage__WEBPACK_IMPORTED_MODULE_12__.getStorage)();
+                }
+            })
         ],
         providers: [{ provide: _angular_router__WEBPACK_IMPORTED_MODULE_13__.RouteReuseStrategy, useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.IonicRouteStrategy }],
-        bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_1__.AppComponent],
+        bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_1__.AppComponent]
     })
 ], AppModule);
 
@@ -194,16 +218,29 @@ const environment = {
         messagingSenderId: '304978564351',
         measurementId: 'G-FKXB7KSG89',
     },
-    production: false
-    /*  firebaseConfig : {
-       apiKey: "AIzaSyCY_lK-xwufD5VdjSyj-ABoA5hKIgS--dc",
-       authDomain: "ecrfish-1d236.firebaseapp.com",
-       projectId: "ecrfish-1d236",
-       storageBucket: "ecrfish-1d236.appspot.com",
-       messagingSenderId: "304978564351",
-       appId: "1:304978564351:web:4bc5e9f6215d2f013a68ca",
-       measurementId: "${config.measurementId}"
-     }; */
+    /* firebase: {
+      projectId: 'ecrfish-1d236',
+      appId: '1:304978564351:web:4bc5e9f6215d2f013a68ca',
+      databaseURL: 'https://ecrfish-1d236-default-rtdb.asia-southeast1.firebasedatabase.app',
+      storageBucket: 'ecrfish-1d236.appspot.com',
+      locationId: 'us-central',
+      apiKey: 'AIzaSyCY_lK-xwufD5VdjSyj-ABoA5hKIgS--dc',
+      authDomain: 'ecrfish-1d236.firebaseapp.com',
+      messagingSenderId: '304978564351',
+      measurementId: 'G-FKXB7KSG89',
+    }, */
+    useEmulators: false,
+    production: false,
+    firebaseConfig: {
+        apiKey: "AIzaSyCY_lK-xwufD5VdjSyj-ABoA5hKIgS--dc",
+        authDomain: "ecrfish-1d236.firebaseapp.com",
+        databaseURL: "https://ecrfish-1d236-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "ecrfish-1d236",
+        storageBucket: "ecrfish-1d236.appspot.com",
+        messagingSenderId: "304978564351",
+        appId: "1:304978564351:web:4bc5e9f6215d2f013a68ca",
+        measurementId: "G-FKXB7KSG89"
+    }
 };
 /*
  * For easier debugging in development mode, you can import the following file
