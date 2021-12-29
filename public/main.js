@@ -51,7 +51,11 @@ const routes = [
     {
         path: 'register',
         loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_auth_register_register_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./auth/register/register.module */ 6108)).then(m => m.RegisterPageModule)
-    },
+    }
+    /* {
+      path: 'tab4',
+      loadChildren: () => import('./tab4/tab4.module').then( m => m.Tab4PageModule)
+    }, */
 ];
 let AppRoutingModule = class AppRoutingModule {
 };

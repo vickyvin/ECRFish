@@ -1237,7 +1237,8 @@ sub {
   align-items: baseline !important;
 }
 .cont {
-  --background: url('Splashscreen.png') no-repeat center center/cover;
+  --background: url('Bg_1.jpg') no-repeat center center/cover;
+  --opacity: 0.6;
 }
 
 /*# sourceMappingURL=styles.css.map*/

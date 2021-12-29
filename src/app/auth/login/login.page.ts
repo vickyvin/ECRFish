@@ -5,6 +5,7 @@ import { ModalController, NavController } from '@ionic/angular';
 import { RegisterPage } from '../register/register.page';
 import { NgForm } from '@angular/forms';
 import { AlertService } from 'src/app/services/alert.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 
 
@@ -19,7 +20,8 @@ export class LoginPage implements OnInit {
     private  router: Router,
     private modalController: ModalController,
     private navCtrl: NavController,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private authService:AuthenticationService
     ) { }
 
   // ngOnInit() {
@@ -50,13 +52,19 @@ export class LoginPage implements OnInit {
   // }
   login(form: NgForm) {
     //alert('log in clicked');
-   
-    this.alertService.presentToast('Login Successfull');
-    //if(this.authService.isLoggedIn)
-    //this.authService.setAdmin(true);
-    //this.authService.isAdmin = true;
-
-    this.router.navigate(['/tabs']);
+    this.alertService.Loading(true); 
+    this.authService.login(form.value.email, form.value.password).then(res=>{
+      console.log('');
+      this.router.navigate(['/tabs']).then(()=>{
+        this.alertService.presentToast("Login Successfull");
+        this.alertService.Loading(false);
+      })
+    }).catch((error)=>{
+      this.alertService.presentToast("Invalid Credentials.! Login Failed");
+      console.log('login error',JSON.stringify(error));
+      this.alertService.Loading(false);
+    })
+     
   }
 
 }

@@ -15,6 +15,7 @@ import { provideFunctions,getFunctions } from '@angular/fire/functions';
 import { provideMessaging,getMessaging } from '@angular/fire/messaging';
 import { LoginPage } from './auth/login/login.page';
 import { RegisterPage } from './auth/register/register.page';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -24,16 +25,10 @@ import { RegisterPage } from './auth/register/register.page';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+    HttpClientModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() =>getFirestore()),
-    provideAuth(()=>{
-      if (environment.useEmulators) {
-        const fireauth = getAuth();
-        return fireauth;
-    } else {
-        getAuth();
-    }
-    }),
+    provideAuth(()=>getAuth()),
     provideFunctions(() => {
       if (environment.useEmulators) {
         const firefunctions = getFunctions();
